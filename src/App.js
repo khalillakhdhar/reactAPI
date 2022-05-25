@@ -12,16 +12,53 @@ import Main from './components/Main';
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Nav/>
+    <Router>
+      <header className="App-header">
+        <Navbar bg="dark" variant="dark">
+          <Container>
+            <Navbar.Brand>
+              <Link to={'/'} className="nav-link">
+                Home
+              </Link>
+            </Navbar.Brand>
 
-                <Switch>
-                <Route path="/" element={<Main/>}>
-                  </Route>
-                  
-                </Switch>
-      </Router>
-    </div>
+            
+          </Container>
+        </Navbar>
+      </header>
+
+      <Container>
+        <Row>
+          <Col md={12}>
+            <div className="wrapper">
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  component={(props) => <Main {...props} />}
+                />
+                <Route
+                  exact
+                  path="/create-student"
+                  component={(props) => <CreateStudent {...props} />}
+                />
+                <Route
+                  exact
+                  path="/edit-student/:id"
+                  component={(props) => <EditStudent {...props} />}
+                />
+                <Route
+                  exact
+                  path="/student-list"
+                  component={(props) => <StudentList {...props} />}
+                />
+              </Switch>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </Router>
+  </div>
   )
 }
 
